@@ -473,7 +473,7 @@ button[role="switch"] {
   background-color: var(--t3-message-surface);
 }
 
-[data-sidebar-rename-row].bb-sidebar-selected-row {
+.bb-sidebar-selected-row {
   box-shadow: inset 0 0 0 1px var(--t3-sidebar-row-ring);
 }
 
