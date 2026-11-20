@@ -342,12 +342,36 @@ const LUCIDE_ICONS: Record<string, LucideIcon> = {
   ZoomOut,
 };
 
+const WRAPPER_BOX = {
+  display: "inherit",
+  width: "inherit",
+  height: "inherit",
+} as const;
+
+const ICON_FILL_RULE =
+  'span[data-icon-root][class*="fill-"] > svg.lucide { fill: inherit; }';
+
 export default definePluginApp((app) => {
+  app.contentScripts.register({
+    id: "icon-fill",
+    mount({ signal }) {
+      const style = document.createElement("style");
+      style.textContent = ICON_FILL_RULE;
+      document.head.append(style);
+      const remove = () => style.remove();
+      signal.addEventListener("abort", remove, { once: true });
+      return remove;
+    },
+  });
   for (const [name, Artwork] of Object.entries(LUCIDE_ICONS)) {
     app.experimental_icons.register({
       name,
       component: ({ className }) => (
-        <Artwork className={className} strokeWidth={1.75} />
+        <Artwork
+          className={className}
+          strokeWidth={1.75}
+          style={WRAPPER_BOX}
+        />
       ),
     });
   }

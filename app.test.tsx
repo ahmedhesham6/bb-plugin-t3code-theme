@@ -20,3 +20,12 @@ it("draws each icon as Lucide artwork at stroke width 1.75, sized by the caller"
     expect(html, name).toContain('stroke="currentColor"');
   }
 });
+
+it("takes its box from bb's icon wrapper, so an inline wrapper keeps its size", () => {
+  const { component: Artwork } = app.icons.find(
+    (icon) => icon.name === "ExternalLink",
+  )!;
+  expect(renderToStaticMarkup(<Artwork className="size-full" />)).toContain(
+    'style="display:inherit;width:inherit;height:inherit"',
+  );
+});
