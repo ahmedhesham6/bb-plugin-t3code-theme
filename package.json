@@ -1,0 +1,55 @@
+{
+  "name": "bb-plugin-t3code-theme",
+  "version": "0.1.0",
+  "description": "Makes bb look like T3 Code: colors, icons, fonts, shadows, borders, buttons, spacing and motion, in light and dark.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahmedhesham6/bb-plugin-t3code-theme.git"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "bb plugin build",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "engines": {
+    "bb": ">=0.50",
+    "bbPluginSdk": ">=0.4.84"
+  },
+  "bb": {
+    "name": "T3 Code Theme",
+    "description": "Makes bb look like T3 Code: colors, icons, fonts, shadows, borders, buttons, spacing and motion, in light and dark.",
+    "branding": {
+      "icon": "Palette"
+    },
+    "server": "./server.ts",
+    "app": "./app.tsx",
+    "themes": [
+      {
+        "id": "t3code",
+        "name": "T3 Code",
+        "description": "The default T3 Code look, in light and dark.",
+        "css": "./themes/t3code.css"
+      }
+    ]
+  },
+  "keywords": [
+    "bb-plugin"
+  ],
+  "dependencies": {
+    "lucide-react": "^0.564.0"
+  },
+  "devDependencies": {
+    "@get-bb/plugin-sdk": "0.6.157",
+    "@testing-library/dom": "^10.4.2",
+    "@testing-library/react": "^16.3.3",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "typescript": "^5.7.0",
+    "vitest": "^3.2.7"
+  }
+}
