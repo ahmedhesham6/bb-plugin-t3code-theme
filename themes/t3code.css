@@ -477,6 +477,77 @@ button[role="switch"] {
   box-shadow: inset 0 0 0 1px var(--t3-sidebar-row-ring);
 }
 
+[data-framed] {
+  background-image: var(--t3-surface-grain);
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+[data-framed] nav[data-sidebar-navigation-placement="rail"],
+[data-framed] [data-sidebar="sidebar"] .col-start-1.row-start-2.bg-surface-recessed,
+[data-framed] [data-sidebar="collapsible-body"] {
+  border-color: transparent;
+  background-color: transparent;
+  background-image: none;
+}
+
+[data-framed] [data-sidebar="panel"]::before {
+  position: absolute;
+  top: calc(-1 * var(--bb-window-title-bar-height));
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 5rem;
+  background-image: var(--t3-stage-fade), var(--t3-stage-art);
+  background-repeat: no-repeat;
+  background-size: 100% 100%, auto 100%;
+  content: "";
+  pointer-events: none;
+}
+
+[data-framed] [data-testid$="sidebar-top-reserve-row"] {
+  --ink: initial;
+  --foreground: initial;
+  --sidebar-foreground: initial;
+  --muted-foreground: initial;
+  --state-hover: initial;
+  --sidebar-accent: initial;
+  color: inherit;
+}
+
+[data-framed] [data-testid="app-window-title-bar"] {
+  --ink: #fff;
+  --foreground: #fff;
+  --sidebar-foreground: #fff;
+  --muted-foreground: rgb(255 255 255 / 70%);
+  --state-hover: rgb(255 255 255 / 10%);
+  --sidebar-accent: var(--state-hover);
+  color: #fff;
+}
+
+[data-sidebar="sidebar"] .group\/card {
+  border-radius: calc(var(--radius) - 2px);
+}
+
+[data-sidebar="sidebar"] .group\/card > a[data-sidebar-thread-id] {
+  border-radius: inherit;
+}
+
+[data-sidebar="sidebar"] .group\/card > .bg-sidebar-primary {
+  display: none;
+}
+
+[data-sidebar="sidebar"] .group\/card .line-clamp-2 {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+[data-sidebar="sidebar"] .group\/card:not(.bb-sidebar-selected-row, :hover, :focus-within) .line-clamp-2 {
+  color: color-mix(in oklab, var(--sidebar-foreground) 75%, transparent);
+}
+
 [data-radix-popper-content-wrapper] > :is([role="menu"], [role="listbox"], [role="dialog"]) {
   border: 1px solid color-mix(in oklab, var(--foreground) 10%, transparent);
   border-radius: 0.5rem;
